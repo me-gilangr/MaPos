@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
   <link href="{{ asset('assets') }}/other/fonts/SourceSansPro.css" rel="stylesheet">
 
+	<style>
+		.p17 {
+			padding-top: 17px !important;
+		}
+	</style>
+
 	@livewireStyles
 	@yield('css')
 </head>

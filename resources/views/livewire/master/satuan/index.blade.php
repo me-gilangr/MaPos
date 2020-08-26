@@ -20,10 +20,9 @@
 						<table class="table table-hover" id="satuan-table" style="width: 100%;">
 							<thead>
 								<tr>
-									<th>#</th>
-									<th>Kode Satuan</th>
-									<th>Nama Satuan</th>
-									<th>Date</th>
+									<th width="10%">Kode</th>
+									<th width="40%">Nama Satuan</th>
+									<th width="20%">Tanggal Buat</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -69,29 +68,33 @@
 						},
 					},
 					columns: [
-						{
-							"data": 'DT_RowIndex',
-							"name": 'DT_RowIndex',
-							"orderable": false,
-							"searchable": false
-						},
+						// {
+						// 	"data": 'DT_RowIndex',
+						// 	"name": 'DT_RowIndex',
+						// 	"orderable": false,
+						// 	"searchable": false,
+						// 	"className": "p17",
+						// },
 						{
 							"data": 'FK_SATUAN',
 							"name": 'FK_SATUAN',
 							"orderable": true,
-							"searchable": true
+							"searchable": true,
+							"className": "p17",
 						},
 						{
 							"data": 'FN_SATUAN',
 							"name": 'FN_SATUAN',
 							"orderable": true,
-							"searchable": true
+							"searchable": true,
+							"className": "p17",
 						},
 						{
 							"data": 'created_at',
 							"name": 'created_at',
 							"orderable": true,
-							"searchable": true
+							"searchable": true,
+							"className": "p17",
 						},
 						{
 							"data": "action",

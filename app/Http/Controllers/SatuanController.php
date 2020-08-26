@@ -22,7 +22,7 @@ class SatuanController extends Controller
 		public function _dataColumn($dataTables)
 		{
 			$dataTables->addColumn('created_at', function ($data) {
-				$date = '<h1>'. date('d/m/Y',strtotime($data->created_at)).'</h1>';
+				$date = '<u>'. date('d/m/Y H:i:s',strtotime($data->created_at)).'</u>';
 				return $date;
 			});
 			
