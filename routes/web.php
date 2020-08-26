@@ -21,5 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/main', 'MainController@main')->name('main');
-	Route::resource('Jenis', 'JenisController');
+	Route::resource('jenis', 'JenisController', ['only' => ['index']]);
+	Route::resource('satuan', 'SatuanController', ['only' => 'index']);
+
+	Route::group(['prefix' => 'datatable', 'as' => 'datatable.'], function () {
+		Route::post('jenis', 'JenisController@datatable')->name('jenis');
+		Route::post('satuan', 'SatuanController@datatable')->name('satuan');
+	});
 });

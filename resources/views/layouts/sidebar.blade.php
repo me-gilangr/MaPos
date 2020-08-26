@@ -13,7 +13,7 @@
 			</li>
 			<li class="nav-header pt-3 pl-2">Master Data</li>
 			<li class="nav-item">
-				<a href="{{ route('main') }}" class="nav-link">
+				<a href="{{ route('satuan.index') }}" class="nav-link">
 					<i class="nav-icon fa fa-cogs text-primary"></i>
 					<p>
 						Data Satuan
@@ -21,7 +21,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a href="{{ route('main') }}" class="nav-link">
+				<a href="{{ route('jenis.index') }}" class="nav-link">
 					<i class="nav-icon fa fa-cogs text-primary"></i>
 					<p>
 						Data Jenis

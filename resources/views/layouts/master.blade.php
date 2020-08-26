@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
   <link href="{{ asset('assets') }}/other/fonts/SourceSansPro.css" rel="stylesheet">
 
+	@livewireStyles
 	@yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -65,7 +66,7 @@
   </aside>
 
   <div class="content-wrapper">
-    <section class="content-header">
+    <section class="content-header pl-4 pr-4">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -87,10 +88,8 @@
       </div>
     </section>
 
-    <section class="content">
-      <div class="row">
-				@yield('content')
-      </div>
+    <section class="content pl-4 pr-4">
+			@yield('content')
     </section>
   </div>
   <footer class="main-footer">
@@ -125,6 +124,8 @@
   });
 </script> --}}
 
+@livewireScripts
+@stack('script')
 @yield('script')
 
 </body>

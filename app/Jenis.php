@@ -9,6 +9,7 @@ class Jenis extends Model
 {
 	protected $table = 'T00_M_Jenis';	
 	protected $primaryKey	= 'FK_JENIS';
+	protected $keyType = 'string';
 	public $incrementing = false;
 
 	protected $fillable = [

@@ -9,6 +9,7 @@ class Satuan extends Model
 {
 	protected $table = 'T00_M_Satuan';
 	protected $primaryKey = 'FK_SATUAN';
+	protected $keyType = 'string';
 	public $incrementing = false;
 
 	protected $fillable = [
