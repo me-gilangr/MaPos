@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="{{ asset('assets') }}/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <link rel="stylesheet" href="{{ asset('assets') }}/dist/css/adminlte.min.css">
   <link href="{{ asset('assets') }}/other/fonts/SourceSansPro.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('assets') }}/plugins/toastr/toastr.min.css">
 
 	<style>
 		.p17 {
@@ -115,24 +116,57 @@
 <script src="{{ asset('assets') }}/plugins/datatables/jquery.dataTables.js"></script>
 <script src="{{ asset('assets') }}/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <script src="{{ asset('assets') }}/dist/js/adminlte.min.js"></script> 
+<script src="{{ asset('assets') }}/plugins/toastr/toastr.min.js"></script>
 
-{{-- <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
-</script> --}}
+
+@if (session()->has('success'))
+	<script>
+		toastr.success("{{ session('success') }}", 'Berhasil !');
+	</script>
+@endif
+
+@if (session()->has('warning'))
+	<script>
+		toastr.warning("{{ session('warning') }}", 'Peringatan !');
+	</script>
+@endif
+
+@if (session()->has('info'))
+	<script>
+		toastr.info("{{ session('info') }}", 'Informasi !');
+	</script>
+@endif
+
+@if (session()->has('error'))
+	<script>
+		toastr.error("{{ session('error') }}", 'Kesalahan !');
+	</script>
+@endif
 
 @livewireScripts
 @stack('script')
 @yield('script')
+
+
+<script>
+	$(document).ready(function() {
+		window.livewire.on('success', success => {
+			toastr.success(success, 'Berhasil !');
+		});
+		
+		window.livewire.on('info', info => {			
+			toastr.info(info, 'Informasi !');
+		});
+
+		window.livewire.on('warning', warning => {			
+			toastr.warning(warning, 'Peringatan !');
+		});
+
+		window.livewire.on('error', error => {			
+			toastr.error(error, 'Kesalahan !');
+		});
+	});
+</script>
 
 </body>
 </html>

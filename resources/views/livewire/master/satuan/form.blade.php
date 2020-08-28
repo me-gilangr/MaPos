@@ -1,10 +1,12 @@
 <div>
-	<form wire:submit.prevent="tambah()">
+	<form wire:submit.prevent="{{ !$edit ? 'tambah()':'updateData("'.$edit->FK_SATUAN.'")' }}">	
 		<div wire:ignore.self class="modal fade" id="modalCreate" tabindex="-1" aria-labelledby="modalCreateLabel" aria-hidden="true">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="modalCreateLabel">Form Tambah Satuan</h5>
+						<h5 class="modal-title" id="modalCreateLabel">
+							{{ !$edit ? 'Form Tambah Satuan':'Form Edit Satuan' }}
+						</h5>
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
@@ -23,8 +25,10 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-						<button type="submit" class="btn btn-primary">Tambah Data</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Tutup</button>
+						<button type="submit" class="btn btn-primary">
+							{{ !$edit ? 'Tambah Data':'Simpan Perubahan' }}
+						</button>
 					</div>
 				</div>
 			</div>
@@ -33,12 +37,20 @@
 
 </div>
 
-	@push('script')
-		<script>
-			$(document).ready(function(){
-				window.livewire.on('tutupModal', function(){
-					$('#modalCreate').modal('hide');
-				});
+@push('script')
+	<script>
+		$(document).ready(function(){
+			window.livewire.on('tutupModal', function(){
+				$('#modalCreate').modal('hide');
 			});
-		</script>
-	@endpush
+
+			window.livewire.on('bukaModal', function(){
+				$('#modalCreate').modal('show');
+			});
+
+			$('#modalCreate').on('hidden.bs.modal', function (e) {
+				window.livewire.emit('editFalse');
+			})
+		});
+	</script>
+@endpush

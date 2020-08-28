@@ -16,7 +16,7 @@ class SatuanController extends Controller
 		
 		public function datatable(Request $request)
 		{
-			return $this->jsonGetData('App\Satuan');
+			return $this->jsonGetData('App\Satuan', $request->trashed);
 		}
 
 		public function _dataColumn($dataTables)
@@ -25,8 +25,15 @@ class SatuanController extends Controller
 				$date = '<u>'. date('d/m/Y H:i:s',strtotime($data->created_at)).'</u>';
 				return $date;
 			});
+
+			$dataTables->addColumn('deleted_at', function ($data) {
+				$date = '<u>'. date('d/m/Y H:i:s',strtotime($data->deleted_at)).'</u>';
+				return $date;
+			});
+		
 			
-			$this->rawColumns(['created_at']);
+
+			$this->rawColumns(['created_at', 'deleted_at']);
 
 			return $dataTables;
 		}
