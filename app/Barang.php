@@ -14,6 +14,7 @@ class Barang extends Model
 
 	use SoftDeletes;
 
+
 	protected $fillable = [
 		'FK_BRG', 'FN_BRG', 'FK_SATUAN', 'FK_JENIS',
 	];
